@@ -164,38 +164,44 @@
         margin-bottom: 15px;
       }
 
-      .about-image {
-        width: 100%;
-        height: 350px;
-        background: linear-gradient(45deg, #1e293b, #0f172a);
-        border: 2px solid var(--neon-purple);
-        border-radius: 20px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        box-shadow: 0 0 30px rgba(139, 92, 246, 0.2);
-        font-size: 4rem;
-        color: var(--neon-purple);
-      }
-
+      /* Tìm và sửa lại class này */
+.about-image {
+  width: 100%;
+  height: 350px;
+  background: linear-gradient(45deg, #1e293b, #0f172a);
+  border: 2px solid var(--neon-purple);
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0 30px rgba(139, 92, 246, 0.2);
+  /* QUAN TRỌNG NHẤT: Cắt bỏ phần ảnh bị tràn ra ngoài viền bo góc */
+  overflow: hidden; 
+  position: relative;
+}
+/* Thêm đoạn này ngay bên dưới để kiểm soát kích thước bức ảnh */
+.about-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Giúp ảnh tự động zoom và cắt cúp vừa vặn khung mà không bị méo tỉ lệ */
+  /* Thêm dòng này để kéo trọng tâm ảnh lên phía trên */
+ object-position: 70% 80%;
+}
       /* === SKILLS SECTION === */
       .skills-grid {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         gap: 30px;
       }
-
       .skill-item {
         margin-bottom: 20px;
       }
-
       .skill-info {
         display: flex;
         justify-content: space-between;
         margin-bottom: 8px;
         font-family: "Fira Code", monospace;
       }
-
       .progress-bar {
         width: 100%;
         height: 10px;
@@ -203,7 +209,6 @@
         border-radius: 5px;
         overflow: hidden;
       }
-
       .progress {
         height: 100%;
         background: var(--gradient-primary);
@@ -218,7 +223,6 @@
         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
         gap: 30px;
       }
-
       .project-card {
         background: var(--bg-secondary);
         border-radius: 15px;
@@ -295,6 +299,16 @@
         border: 1px solid rgba(255, 255, 255, 0.05);
       }
 
+      .contact-avatar {
+        width: 90px;
+        height: 90px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin: -80px auto 20px; /* Kéo ảnh lên trên, tạo hiệu ứng gối đầu */
+        border: 4px solid var(--bg-secondary);
+        box-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
+      }
+
       .social-links {
         display: flex;
         justify-content: center;
@@ -368,7 +382,7 @@
 
     <section id="hero">
       <div class="container hero-content" data-aos="fade-up">
-        <h1>Xin chào, mình là <br /><span>Sinh viên Kỹ thuật</span></h1>
+        <h1>Xin chào, mình là <br /><span>Sinh viên Võ Hữu Bằng</span></h1>
         <div class="typing-text"><span id="typed"></span></div>
         <p
           style="
@@ -379,8 +393,7 @@
             margin-right: auto;
           "
         >
-          Đam mê thiết kế phần cứng, lập trình nhúng và xây dựng các hệ thống
-          điện tử ứng dụng thực tiễn.
+          Đam mê thiết kế phần cứng, lập trình nhúng và video content.
         </p>
         <a href="#projects" class="btn"
           >Xem Dự Án <i class="fas fa-arrow-down" style="margin-left: 8px"></i
@@ -394,7 +407,7 @@
         <div class="about-content">
           <div class="about-text" data-aos="fade-right">
             <p>
-              Mình hiện là sinh viên năm 4 chuyên ngành
+              Mình hiện là Võ Hữu Bằng, sinh viên năm 4 chuyên ngành
               <strong>Điện tử – Viễn thông</strong> tại trường Đại học Bách khoa
               Đà Nẵng (DUT).
             </p>
@@ -406,12 +419,14 @@
               quyết các bài toán phần cứng.
             </p>
             <p>
-              Ngoài ra, mình cũng có niềm đam mê với việc sáng tạo nội dung công
-              nghệ thông qua các nền tảng video ngắn.
+              Ngoài ra, mình cũng có 1 chút kĩ năng về
+              <strong>Video content creation</strong>, đã xây dựng và phát triển
+              kênh TikTok với nội dung công nghệ và tiếp thị liên kết (Affiliate
+              Marketing).
             </p>
           </div>
           <div class="about-image" data-aos="fade-left">
-            <i class="fas fa-microchip"></i>
+            <img src="anh-chan-dung-cua-ban.jpg" alt="Chân dung Võ Hữu Bằng" />
           </div>
         </div>
       </div>
@@ -424,10 +439,10 @@
           <div data-aos="fade-up" data-aos-delay="100">
             <div class="skill-item">
               <div class="skill-info">
-                <span>C / Python</span><span>85%</span>
+                <span>C++</span><span>80%</span>
               </div>
               <div class="progress-bar">
-                <div class="progress" data-width="85%"></div>
+                <div class="progress" data-width="80%"></div>
               </div>
             </div>
             <div class="skill-item">
@@ -449,25 +464,25 @@
           </div>
           <div data-aos="fade-up" data-aos-delay="200">
             <div class="skill-item">
-              <div class="skill-info"><span>MATLAB</span><span>75%</span></div>
+              <div class="skill-info"><span>MATLAB</span><span>65%</span></div>
               <div class="progress-bar">
-                <div class="progress" data-width="75%"></div>
+                <div class="progress" data-width="65%"></div>
               </div>
             </div>
             <div class="skill-item">
               <div class="skill-info">
-                <span>IC Design (Analog)</span><span>70%</span>
+                <span>IC Design (Analog)</span><span>60%</span>
               </div>
               <div class="progress-bar">
-                <div class="progress" data-width="70%"></div>
+                <div class="progress" data-width="60%"></div>
               </div>
             </div>
             <div class="skill-item">
               <div class="skill-info">
-                <span>Video Editing (CapCut/AI)</span><span>85%</span>
+                <span>Video Editing (CapCut/AI)</span><span>90%</span>
               </div>
               <div class="progress-bar">
-                <div class="progress" data-width="85%"></div>
+                <div class="progress" data-width="90%"></div>
               </div>
             </div>
           </div>
@@ -481,54 +496,48 @@
         <div class="projects-grid">
           <div class="project-card" data-aos="fade-up" data-aos-delay="100">
             <i class="fas fa-hand-paper project-icon"></i>
-            <h3>Smart Glove - Hệ thống Hỗ trợ Giao tiếp</h3>
+            <h3>Quản lí đăng kí lái xe</h3>
             <p>
-              Găng tay thông minh tích hợp cảm biến kết hợp kính micro-OLED, ứng
-              dụng công nghệ LiDAR và nhận diện cử chỉ để hỗ trợ người khiếm
-              thính.
+              Hệ thống có chức năng Hệ thống hỗ trợ đăng ký/đăng nhập và phân quyền Admin/User, cho phép quản lý học viên và khóa học (thêm, sửa, xoá, tìm kiếm), đăng ký hoặc hủy khóa học, quản lý lịch học có kiểm tra trùng thời gian/phòng, hiển thị dữ liệu dạng bảng Unicode, lưu/đọc file .txt, và giao diện console có màu kèm điều hướng bằng phím mũi tên.
             </p>
             <div class="tech-stack">
-              <span class="tech-tag">C</span>
-              <span class="tech-tag">Sensors</span>
-              <span class="tech-tag">LiDAR</span>
+              <span class="tech-tag">C++</span>
+              <span class="tech-tag">Cấu trúc dữ liệu và giải thuật</span>
+              <span class="tech-tag">Con trỏ</span>
             </div>
-            <a href="#" class="project-link"
+            <a href="#" target="_blank" class="project-link" id="link-prj-1"
               >Xem chi tiết <i class="fas fa-external-link-alt"></i
             ></a>
           </div>
 
           <div class="project-card" data-aos="fade-up" data-aos-delay="200">
             <i class="fas fa-border-all project-icon"></i>
-            <h3>Haptic Patch - Mảng Áp Điện 8x8</h3>
+            <h3>Profile cá nhân</h3>
             <p>
-              Thiết kế hệ thống phản hồi xúc giác sử dụng mảng vật liệu áp điện
-              8x8, chia thành 4 giai đoạn cụ thể từ mô phỏng đến thi công phần
-              cứng.
+              Trang web portfolio cá nhân được thiết kế với giao diện hiện đại, tối ưu trải nghiệm người dùng và hiệu ứng động mượt mà. Sử dụng HTML/CSS/JS thuần, tích hợp thư viện AOS cho hiệu ứng cuộn và Typed.js cho hiệu ứng gõ chữ, tạo nên một trang giới thiệu bản thân ấn tượng và chuyên nghiệp.
             </p>
             <div class="tech-stack">
-              <span class="tech-tag">Altium</span>
-              <span class="tech-tag">Hardware Design</span>
-              <span class="tech-tag">MATLAB</span>
+              <span class="tech-tag">HTML</span>
+              <span class="tech-tag">CSS</span>
+              <span class="tech-tag">JavaScript</span>
             </div>
-            <a href="#" class="project-link"
+            <a href="#" target="_blank" class="project-link" id="link-prj-2"
               >Xem chi tiết <i class="fas fa-external-link-alt"></i
             ></a>
           </div>
 
           <div class="project-card" data-aos="fade-up" data-aos-delay="300">
             <i class="fab fa-tiktok project-icon"></i>
-            <h3>Affiliate & Tech Media</h3>
+            <h3>Video Editor</h3>
             <p>
-              Xây dựng và phát triển kênh TikTok tiếp thị liên kết (Affiliate),
-              ứng dụng các công cụ AI để tự động hóa quy trình lên kịch bản và
-              edit video.
+              Edit video content trên nền tảng CapCut, kết hợp với các công cụ AI để tạo hiệu ứng, chỉnh sửa nhanh và tối ưu hóa nội dung cho TikTok. Phát triển kênh TikTok với nội dung công nghệ và tiếp thị liên kết, thu hút lượng lớn người theo dõi và tương tác tích cực.
             </p>
             <div class="tech-stack">
               <span class="tech-tag">CapCut</span>
               <span class="tech-tag">AI Tools</span>
               <span class="tech-tag">Marketing</span>
             </div>
-            <a href="#" class="project-link"
+            <a href="#" target="_blank" class="project-link" id="link-prj-3"
               >Xem chi tiết <i class="fas fa-external-link-alt"></i
             ></a>
           </div>
@@ -540,15 +549,29 @@
       <div class="container" data-aos="fade-up">
         <h2 class="section-title">Kết nối với mình</h2>
         <div class="contact-content">
+          <img
+            src="anh-chan-dung-cua-ban.jpg"
+            alt="Avatar Võ Hữu Bằng"
+            class="contact-avatar"
+          />
           <p style="color: var(--text-muted); margin-bottom: 20px">
             Sẵn sàng đón nhận các cơ hội thực tập, hợp tác thiết kế vi mạch hoặc
             trao đổi về công nghệ.
           </p>
 
           <div class="social-links">
-            <a href="#"><i class="fab fa-github"></i></a>
-            <a href="#"><i class="fab fa-linkedin-in"></i></a>
-            <a href="#"><i class="fas fa-envelope"></i></a>
+            <a href="#" target="_blank" title="GitHub" id="link-github"
+              ><i class="fab fa-github"></i
+            ></a>
+            <a href="#" target="_blank" title="LinkedIn" id="link-linkedin"
+              ><i class="fab fa-linkedin-in"></i
+            ></a>
+            <a href="#" target="_blank" title="Facebook" id="link-facebook"
+              ><i class="fab fa-facebook"></i
+            ></a>
+            <a href="#" title="Gửi Email cho tôi" id="link-email"
+              ><i class="fas fa-envelope"></i
+            ></a>
           </div>
 
           <form
@@ -569,7 +592,7 @@
             ></textarea>
             <button type="submit" class="btn" style="width: 100%">
               Gửi Tin Nhắn
-            </button>
+            </button>    
           </form>
         </div>
       </div>
@@ -579,13 +602,36 @@
     <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
 
     <script>
+      // ==============================================================
+      // KHU VỰC CÀI ĐẶT THÔNG TIN (SỬA LINK TẠI ĐÂY CỰC KỲ DỄ DÀNG)
+      // ==============================================================
+      const MY_LINKS = {
+        projects: {
+          project1: "https://github.com/HuuBangdanghoc/Quan-li-hoc-dang-ki-lai-xe",
+          project2: "https://github.com/HuuBangdanghoc/Portfolio",
+          project3: "https://drive.google.com/drive/folders/1PlRtR_iqbVdyhnVzBlGfK_Q-kVP_oWwC?usp=sharing",
+        },
+        social: {
+          github: "https://github.com/HuuBangdanghoc",
+          linkedin: "https://linkedin.com/in/TENDANGNHAP",
+          email: "mailto:huubangvo00@gmail.com",
+          facebook: "https://www.facebook.com/bang.huu.3766952/",
+        },
+      };
+
+      // Tự động gán link vào các nút trên giao diện (Bạn không cần quan tâm phần này)
+      document.getElementById("link-prj-1").href = MY_LINKS.projects.project1;
+      document.getElementById("link-prj-2").href = MY_LINKS.projects.project2;
+      document.getElementById("link-prj-3").href = MY_LINKS.projects.project3;
+      document.getElementById("link-github").href = MY_LINKS.social.github;
+      document.getElementById("link-linkedin").href = MY_LINKS.social.linkedin;
+      document.getElementById("link-facebook").href = MY_LINKS.social.facebook;
+      document.getElementById("link-email").href = MY_LINKS.social.email;
+      // ==============================================================
+
       // 1. Khởi tạo hiệu ứng gõ chữ (Typed.js)
       var typed = new Typed("#typed", {
-        strings: [
-          "Analog IC Designer",
-          "Embedded Systems",
-          "Tech Content Creator",
-        ],
+        strings: ["Analog IC Designer", "Design PCB", "Video Editor"],
         typeSpeed: 60, // Tốc độ gõ
         backSpeed: 30, // Tốc độ xoá
         backDelay: 1500, // Thời gian dừng trước khi xoá
@@ -619,4 +665,5 @@
       });
     </script>
   </body>
+</html>
 </html>
